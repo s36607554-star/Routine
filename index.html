@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samiul | 3rd Semester Routine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image-more/3.1.6/dom-to-image-more.min.js"></script>
+    <style>
+        :root {
+            --bg-deep:   #040d1a;
+            --neon-blue: #00d4ff;
+            --neon-cyan: #00ffcc;
+            --text-dim:  #7ea8c4;
+            --border:    rgba(0,212,255,0.18);
+            --glow-blue: 0 0 12px rgba(0,212,255,.5), 0 0 30px rgba(0,212,255,.2);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+            background-color: var(--bg-deep);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+            position: relative;
+            /* Allow scrolling on smaller screens so the capture div doesn't get squished */
+            overflow-x: auto; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image:
+                linear-gradient(rgba(0,212,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,212,255,.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none; z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,212,255,.07) 0%, transparent 70%);
+            top: -100px; left: -100px;
+            pointer-events: none; z-index: 0;
+            animation: orb 12s ease-in-out infinite alternate;
+        }
+        @keyframes orb { to { transform: translate(120px,80px); } }
+
+        /* ── CAPTURE BOX ── */
+        #capture {
+            position: relative; z-index: 1;
+            /* CRITICAL FIX: Lock width to prevent mobile squishing and scaling layout bugs */
+            width: 1180px; 
+            background: linear-gradient(145deg, #060f20, #08162e);
+            border: 1px solid var(--border);
+            border-radius: 1.25rem;
+            box-shadow: 0 0 0 1px rgba(0,212,255,.08), 0 30px 80px rgba(0,0,0,.7), inset 0 1px 0 rgba(0,212,255,.12);
+            overflow: hidden;
+            padding: 2.5rem 2.5rem 2rem;
+        }
+        #capture::before, #capture::after {
+            content: '';
+            position: absolute;
+            width: 60px; height: 60px;
+            border-color: var(--neon-blue);
+            border-style: solid;
+        }
+        #capture::before { top:0;left:0; border-width:3px 0 0 3px; border-radius:1.25rem 0 0 0; }
+        #capture::after  { bottom:0;right:0; border-width:0 3px 3px 0; border-radius:0 0 1.25rem 0; }
+
+        /* ── HEADER ── */
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header-eyebrow {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--neon-cyan); font-size: .78rem;
+            letter-spacing: .35em; text-transform: uppercase;
+            display: block; margin-bottom: .5rem; opacity: .85;
+            white-space: nowrap;
+        }
+        .header-title {
+            font-family: 'Orbitron', monospace; font-weight: 900;
+            font-size: 2.4rem; color: #fff;
+            line-height: 1.2; letter-spacing: .04em;
+            text-shadow: var(--glow-blue); margin-bottom: .5rem;
+            white-space: nowrap;
+        }
+        .header-title .accent { color: var(--neon-blue); }
+        .header-sub {
+            font-family: 'Share Tech Mono', monospace; font-size: .82rem;
+            color: var(--text-dim); letter-spacing: .15em;
+            white-space: nowrap;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg,transparent,var(--neon-blue),var(--neon-cyan),transparent);
+            margin: 1.5rem 0; opacity: .6;
+        }
+
+        /* ── TABLE ── */
+        .table-wrap { border-radius: .75rem; }
+        table { width:100%; border-collapse:separate; border-spacing:6px; }
+
+        thead th {
+            font-family: 'Orbitron', monospace; font-size: .68rem; font-weight: 700;
+            letter-spacing: .1em; color: var(--neon-blue); text-transform: uppercase;
+            padding: .75rem .5rem;
+            background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.15);
+            border-radius: .5rem;
+            white-space: nowrap;
+        }
+        thead th .time-tag {
+            display: block; font-family: 'Share Tech Mono', monospace;
+            font-size: .62rem; color: var(--text-dim); font-weight: 400;
+            margin-top: .25rem; letter-spacing: .05em;
+        }
+        thead th:first-child { color: var(--neon-cyan); }
+
+        tbody td.day-cell {
+            font-family: 'Orbitron', monospace; font-size: .68rem; font-weight: 700;
+            color: var(--neon-cyan); letter-spacing: .12em; text-transform: uppercase;
+            text-align: center; vertical-align: middle;
+            background: rgba(0,255,204,.05); border: 1px solid rgba(0,255,204,.15);
+            border-radius: .5rem; padding: .5rem .3rem;
+            white-space: nowrap; writing-mode: vertical-lr;
+            transform: rotate(180deg); width: 52px;
+        }
+        tbody td.subj-cell { vertical-align: stretch; padding: 3px; }
+
+        /* ── CARDS ── */
+        .card {
+            border-radius: .65rem; padding: .85rem .6rem;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; gap: .3rem;
+            height: 100%; min-height: 90px;
+            transition: transform .25s ease, box-shadow .25s ease;
+            position: relative; overflow: hidden; cursor: default;
+        }
+        .card::before {
+            content: ''; position: absolute;
+            top:0; left:0; right:0; height:2px;
+            border-radius: .65rem .65rem 0 0;
+        }
+        .card:hover { transform: translateY(-4px) scale(1.02); z-index: 10; }
+        
+        /* Converted to divs and locked wrapping */
+        .card-icon { font-size: 1.5rem; line-height: 1; display: block; }
+        .card-name { 
+            font-family:'Rajdhani','Segoe UI',sans-serif; font-weight:700; 
+            font-size:.88rem; line-height:1.2; display: block;
+            white-space: nowrap; /* CRITICAL: Prevents dynamic text splitting during scale */
+        }
+        .card-meta { 
+            font-family:'Share Tech Mono',monospace; font-size:.64rem; 
+            opacity:.75; letter-spacing:.04em; display: block;
+            white-space: nowrap; /* CRITICAL */
+        }
+
+        .c-blue   { background:linear-gradient(145deg,rgba(0,100,180,.22),rgba(0,60,120,.12));   border:1px solid rgba(0,180,255,.28);   color:#7dd3fc; box-shadow:0 4px 20px rgba(0,150,255,.1); }
+        .c-blue::before   { background:linear-gradient(90deg,#0ea5e9,#38bdf8); }
+        .c-blue:hover     { box-shadow:0 10px 30px rgba(0,150,255,.3); }
+        .c-red    { background:linear-gradient(145deg,rgba(180,0,60,.22),rgba(120,0,40,.12));    border:1px solid rgba(255,80,120,.28);  color:#fda4af; box-shadow:0 4px 20px rgba(255,50,100,.1); }
+        .c-red::before    { background:linear-gradient(90deg,#f43f5e,#fb7185); }
+        .c-red:hover      { box-shadow:0 10px 30px rgba(255,50,100,.3); }
+        .c-purple { background:linear-gradient(145deg,rgba(120,40,200,.22),rgba(80,20,150,.12)); border:1px solid rgba(200,130,255,.28); color:#e9d5ff; box-shadow:0 4px 20px rgba(160,80,255,.1); }
+        .c-purple::before { background:linear-gradient(90deg,#a855f7,#c084fc); }
+        .c-purple:hover   { box-shadow:0 10px 30px rgba(160,80,255,.3); }
+        .c-cyan   { background:linear-gradient(145deg,rgba(0,160,140,.22),rgba(0,100,90,.12));   border:1px solid rgba(0,255,200,.28);   color:#99f6e4; box-shadow:0 4px 20px rgba(0,200,180,.1); }
+        .c-cyan::before   { background:linear-gradient(90deg,#14b8a6,#2dd4bf); }
+        .c-cyan:hover     { box-shadow:0 10px 30px rgba(0,200,180,.3); }
+        .c-orange { background:linear-gradient(145deg,rgba(180,80,0,.22),rgba(120,50,0,.12));    border:1px solid rgba(255,160,60,.28);  color:#fed7aa; box-shadow:0 4px 20px rgba(255,120,30,.1); }
+        .c-orange::before { background:linear-gradient(90deg,#f97316,#fb923c); }
+        .c-orange:hover   { box-shadow:0 10px 30px rgba(255,120,30,.3); }
+        .c-green  { background:linear-gradient(145deg,rgba(20,140,60,.22),rgba(10,90,40,.12));   border:1px solid rgba(80,255,140,.28);  color:#bbf7d0; box-shadow:0 4px 20px rgba(40,200,100,.1); }
+        .c-green::before  { background:linear-gradient(90deg,#22c55e,#4ade80); }
+        .c-green:hover    { box-shadow:0 10px 30px rgba(40,200,100,.3); }
+
+        /* ── FOOTER (inside capture) ── */
+        .footer {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 2rem; padding-top: 1.25rem;
+            border-top: 1px solid rgba(0,212,255,.12);
+            flex-wrap: nowrap;
+        }
+        .credit-badge {
+            display: flex; align-items: center; gap: .6rem;
+            background: linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,255,200,.05));
+            border: 1px solid rgba(0,212,255,.3); border-radius: 2rem;
+            padding: .5rem 1.2rem;
+            font-family: 'Share Tech Mono', monospace; font-size: .82rem;
+            color: var(--text-dim); letter-spacing: .08em;
+            box-shadow: 0 0 20px rgba(0,212,255,.08);
+            white-space: nowrap;
+        }
+        .credit-badge .name {
+            font-family: 'Orbitron', monospace; font-weight: 700; font-size: .85rem;
+            color: var(--neon-blue); letter-spacing: .15em;
+            text-shadow: var(--glow-blue);
+        }
+        .credit-badge .dot {
+            width:7px; height:7px; background:var(--neon-cyan); border-radius:50%;
+            box-shadow:0 0 8px var(--neon-cyan); animation:blink 2s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.65)} }
+        .dept-tag {
+            font-family:'Share Tech Mono',monospace; font-size:.7rem;
+            color:var(--neon-cyan); letter-spacing:.1em; opacity:.65;
+            white-space: nowrap;
+        }
+
+        /* ── DOWNLOAD BUTTON (outside capture) ── */
+        .dl-wrap { position:relative; z-index:1; margin-top:1.8rem; }
+        .dl-btn {
+            position:relative; padding:.9rem 2.5rem; background:transparent;
+            border:2px solid var(--neon-blue); color:var(--neon-blue);
+            font-family:'Orbitron',monospace; font-size:.78rem; font-weight:700;
+            letter-spacing:.2em; text-transform:uppercase; border-radius:2rem;
+            cursor:pointer; display:flex; align-items:center; gap:.75rem;
+            box-shadow:0 0 20px rgba(0,212,255,.15),inset 0 0 20px rgba(0,212,255,.04);
+            transition:all .3s ease; overflow:hidden;
+        }
+        .dl-btn::before {
+            content:''; position:absolute; inset:0;
+            background:var(--neon-blue); opacity:0; transition:opacity .3s;
+        }
+        .dl-btn:hover        { color:#040d1a; box-shadow:0 0 45px rgba(0,212,255,.6); }
+        .dl-btn:hover::before{ opacity:1; }
+        .dl-btn:active       { transform:scale(.97); }
+        .dl-btn:disabled     { opacity:.5; cursor:not-allowed; }
+        .dl-btn > * { position:relative; z-index:1; }
+        .spinner {
+            display:none; width:16px; height:16px;
+            border:2px solid currentColor; border-top-color:transparent;
+            border-radius:50%; animation:spin .7s linear infinite;
+        }
+        @keyframes spin { to { transform:rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<!-- ░░░ CAPTURE ZONE ░░░ -->
+<div id="capture">
+
+    <div class="header">
+        <span class="header-eyebrow">⚡ Electrical Technology · 2nd Shift · Academic Schedule</span>
+        <h1 class="header-title">3RD SEMESTER <span class="accent">CLASS ROUTINE</span></h1>
+        <span class="header-sub">// 1:30 PM — 6:45 PM &nbsp;|&nbsp; SUN – THU &nbsp;|&nbsp; 2025–2026</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>DAY</th>
+                    <th>1ST<span class="time-tag">1:30–2:15</span></th>
+                    <th>2ND<span class="time-tag">2:15–3:00</span></th>
+                    <th>3RD<span class="time-tag">3:00–3:45</span></th>
+                    <th>4TH<span class="time-tag">3:45–4:30</span></th>
+                    <th>5TH<span class="time-tag">4:30–5:15</span></th>
+                    <th>6TH<span class="time-tag">5:15–6:00</span></th>
+                    <th>7TH<span class="time-tag">6:00–6:45</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="day-cell">SUN</td>
+                    <td class="subj-cell" colspan="2">
+                        <div class="card c-orange">
+                            <div class="card-icon">🔌</div>
+                            <div class="card-name">Electrical<br>Appliances</div>
+                            <div class="card-meta">ET-8 · Rm 1405</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell">
+                        <div class="card c-cyan">
+                            <div class="card-icon">🧪</div>
+                            <div class="card-name">Chemistry</div>
+                            <div class="card-meta">AAF · Rm 1405</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="1">
+                        <div class="card c-red">
+                            <div class="card-icon">⚡</div>
+                            <div class="card-name">Electrical<br>Circuit-2</div>
+                            <div class="card-meta">ET-2 · Rm 1404</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-blue">
+                            <div class="card-icon">💻</div>
+                            <div class="card-name">Computer<br>Office App.</div>
+                            <div class="card-meta">MIM · Rm 1205</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="day-cell">MON</td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-purple">
+                            <div class="card-icon">📐</div>
+                            <div class="card-name">Mathematics-3</div>
+                            <div class="card-meta">MM · Rm 1407</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="1">
+                        <div class="card c-red">
+                            <div class="card-icon">⚡</div>
+                            <div class="card-name">Electrical<br>Circuit-2</div>
+                            <div class="card-meta">ET-2 · Rm 1407</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-green">
+                            <div class="card-icon">⚙️</div>
+                            <div class="card-name">Industrial<br>Electronics</div>
+                            <div class="card-meta">YH · Rm 311</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="day-cell">TUE</td>
+                    <td class="subj-cell" colspan="2">
+                        <div class="card c-purple">
+                            <div class="card-icon">📐</div>
+                            <div class="card-name">Mathematics-3</div>
+                            <div class="card-meta">MM · Rm 1406</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell">
+                        <div class="card c-green">
+                            <div class="card-icon">⚙️</div>
+                            <div class="card-name">Industrial<br>Electronics</div>
+                            <div class="card-meta">YH · Rm 1406</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="1">
+                        <div class="card c-red">
+                            <div class="card-icon">⚡</div>
+                            <div class="card-name">Electrical<br>Circuit-2</div>
+                            <div class="card-meta">ET-2 · Rm 1404</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-cyan">
+                            <div class="card-icon">🧪</div>
+                            <div class="card-name">Chemistry</div>
+                            <div class="card-meta">AAF · Rm 303</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="day-cell">WED</td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-red">
+                            <div class="card-icon">⚡</div>
+                            <div class="card-name">Electrical<br>Circuit-2</div>
+                            <div class="card-meta">ET-2 · Rm 305</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="1">
+                        <div class="card c-purple">
+                            <div class="card-icon">📐</div>
+                            <div class="card-name">Mathematics-3</div>
+                            <div class="card-meta">MM · Rm 304</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-orange">
+                            <div class="card-icon">🔌</div>
+                            <div class="card-name">Electrical<br>Appliances</div>
+                            <div class="card-meta">ET-8 · Rm 201</div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="day-cell">THU</td>
+                    <td class="subj-cell" colspan="3">
+                        <div class="card c-blue">
+                            <div class="card-icon">💻</div>
+                            <div class="card-name">Computer<br>Office App.</div>
+                            <div class="card-meta">MIM · Rm 1205</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="2">
+                        <div class="card c-cyan">
+                            <div class="card-icon">🧪</div>
+                            <div class="card-name">Chemistry</div>
+                            <div class="card-meta">AAF · Rm 1405</div>
+                        </div>
+                    </td>
+                    <td class="subj-cell" colspan="2">
+                        <div class="card c-green">
+                            <div class="card-icon">⚙️</div>
+                            <div class="card-name">Industrial<br>Electronics</div>
+                            <div class="card-meta">YH · Rm 1405</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="divider" style="margin-top:1.5rem;"></div>
+
+    <div class="footer">
+        <div class="credit-badge">
+            <span class="dot"></span>
+            <span>DESIGNED BY</span>
+            <span class="name">SAMIUL</span>
+            <span>🚀</span>
+        </div>
+        <span class="dept-tag">// ELECTRICAL TECHNOLOGY · 3RD SEM · 2ND SHIFT</span>
+    </div>
+
+</div>
+<!-- ░░░ END CAPTURE ZONE ░░░ -->
+
+<div class="dl-wrap">
+    <button class="dl-btn" id="dlBtn">
+        <svg id="dlIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span class="spinner" id="dlSpinner"></span>
+        <span id="dlLabel">DOWNLOAD AS IMAGE</span>
+    </button>
+</div>
+
+<script>
+(function () {
+    var btn     = document.getElementById('dlBtn');
+    var icon    = document.getElementById('dlIcon');
+    var spinner = document.getElementById('dlSpinner');
+    var label   = document.getElementById('dlLabel');
+    var node    = document.getElementById('capture');
+
+    function busy(on) {
+        btn.disabled           = on;
+        icon.style.display     = on ? 'none'  : 'block';
+        spinner.style.display  = on ? 'block' : 'none';
+        label.textContent      = on ? 'GENERATING…' : 'DOWNLOAD AS IMAGE';
+    }
+
+    function fail() {
+        label.textContent       = 'ERROR — TRY AGAIN';
+        btn.style.borderColor   = '#ff4d6d';
+        btn.style.color         = '#ff4d6d';
+        spinner.style.display   = 'none';
+        setTimeout(function () {
+            label.textContent     = 'DOWNLOAD AS IMAGE';
+            btn.style.borderColor = '';
+            btn.style.color       = '';
+            btn.disabled          = false;
+            icon.style.display    = 'block';
+        }, 3500);
+    }
+
+    btn.addEventListener('click', function () {
+        busy(true);
+
+        document.fonts.ready.then(function () {
+            setTimeout(function () {
+                domtoimage.toPng(node, {
+                    scale: 3, 
+                    style: {
+                        margin: '0', 
+                        animation: 'none',
+                        transition: 'none'
+                    }
+                })
+                .then(function (dataUrl) {
+                    var a = document.createElement('a');
+                    a.download = 'Samiul_3rd_Semester_Routine.png';
+                    a.href = dataUrl;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    busy(false);
+                })
+                .catch(function (err) {
+                    console.error('Export failed:', err);
+                    fail();
+                });
+            }, 300);
+        });
+    });
+})();
+</script>
+</body>
+</html>
