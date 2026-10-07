@@ -3,499 +3,626 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samiul | 3rd Semester Routine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    
+    <title>Samiul | 4th Semester Routine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image-more/3.1.6/dom-to-image-more.min.js"></script>
     <style>
         :root {
-            --bg-deep:   #040d1a;
-            --neon-blue: #00d4ff;
-            --neon-cyan: #00ffcc;
-            --text-dim:  #7ea8c4;
-            --border:    rgba(0,212,255,0.18);
-            --glow-blue: 0 0 12px rgba(0,212,255,.5), 0 0 30px rgba(0,212,255,.2);
+            --bg:        #070d1c;
+            --line:      rgba(148,176,255,.16);
+            --text:      #e8eefc;
+            --text-dim:  #9db0d4;
+            --gold:      #e6c27a;
+            --gold-soft: #f6e3b4;
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Rajdhani', 'Segoe UI', sans-serif;
-            background-color: var(--bg-deep);
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background:
+                radial-gradient(900px 500px at 10% -10%, rgba(91,140,255,.16), transparent 60%),
+                radial-gradient(800px 500px at 100% 110%, rgba(230,194,122,.10), transparent 60%),
+                var(--bg);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
             padding: 2rem 1rem 3rem;
-            position: relative;
-            /* Allow scrolling on smaller screens so the capture div doesn't get squished */
-            overflow-x: auto; 
+            overflow-x: auto;
             -webkit-font-smoothing: antialiased;
+            color: var(--text);
         }
 
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background-image:
-                linear-gradient(rgba(0,212,255,.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0,212,255,.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none; z-index: 0;
-        }
-        body::after {
-            content: '';
-            position: fixed;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,212,255,.07) 0%, transparent 70%);
-            top: -100px; left: -100px;
-            pointer-events: none; z-index: 0;
-            animation: orb 12s ease-in-out infinite alternate;
-        }
-        @keyframes orb { to { transform: translate(120px,80px); } }
+        /* ───────── SUBJECT COLOUR THEMES (vivid, high contrast) ───────── */
+        .k-dc { --c1:#ff8a1f; --c2:#d9480f; }  /* DC Machine – orange   */
+        .k-am { --c1:#a855f7; --c2:#6d28d9; }  /* Applied Mechanics – purple */
+        .k-ep { --c1:#14b8a6; --c2:#0f766e; }  /* EE Project – teal     */
+        .k-ei { --c1:#f43f5e; --c2:#be123c; }  /* Installation – crimson */
+        .k-ss { --c1:#65c728; --c2:#3f7d12; }  /* Social Science – green */
+        .k-de { --c1:#3b82f6; --c2:#1d4ed8; }  /* Digital Electronics – blue */
+        .k-ac { --c1:#e040c8; --c2:#a21caf; }  /* Accounting – magenta   */
 
-        /* ── CAPTURE BOX ── */
+        /* ═════════════ DESKTOP / EXPORT VIEW ═════════════ */
         #capture {
-            position: relative; z-index: 1;
-            /* CRITICAL FIX: Lock width to prevent mobile squishing and scaling layout bugs */
-            width: 1180px; 
-            background: linear-gradient(145deg, #060f20, #08162e);
-            border: 1px solid var(--border);
-            border-radius: 1.25rem;
-            box-shadow: 0 0 0 1px rgba(0,212,255,.08), 0 30px 80px rgba(0,0,0,.7), inset 0 1px 0 rgba(0,212,255,.12);
+            position: relative;
+            width: 1500px; flex-shrink: 0;
+            padding: 0 48px 36px;
+            background:
+                radial-gradient(700px 300px at 0% 0%, rgba(91,140,255,.18), transparent 65%),
+                radial-gradient(600px 300px at 100% 100%, rgba(230,194,122,.10), transparent 65%),
+                linear-gradient(160deg, #0b1530 0%, #08112a 55%, #060b1e 100%);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: 0 40px 90px rgba(0,0,0,.65);
             overflow: hidden;
-            padding: 2.5rem 2.5rem 2rem;
         }
-        #capture::before, #capture::after {
-            content: '';
-            position: absolute;
-            width: 60px; height: 60px;
-            border-color: var(--neon-blue);
-            border-style: solid;
+        .top-bar {
+            height: 5px; margin: 0 -48px 34px;
+            background: linear-gradient(90deg, #5b8cff, #8fb0ff 40%, #e6c27a 100%);
         }
-        #capture::before { top:0;left:0; border-width:3px 0 0 3px; border-radius:1.25rem 0 0 0; }
-        #capture::after  { bottom:0;right:0; border-width:0 3px 3px 0; border-radius:0 0 1.25rem 0; }
 
-        /* ── HEADER ── */
-        .header { text-align: center; margin-bottom: 2rem; }
-        .header-eyebrow {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--neon-cyan); font-size: .78rem;
-            letter-spacing: .35em; text-transform: uppercase;
-            display: block; margin-bottom: .5rem; opacity: .85;
-            white-space: nowrap;
+        .header { display: flex; align-items: center; justify-content: space-between; }
+        .h-left { display: flex; flex-direction: column; gap: 8px; }
+        .institute {
+            font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500;
+            letter-spacing: .26em; text-transform: uppercase; color: var(--gold); white-space: nowrap;
         }
-        .header-title {
-            font-family: 'Orbitron', monospace; font-weight: 900;
-            font-size: 2.4rem; color: #fff;
-            line-height: 1.2; letter-spacing: .04em;
-            text-shadow: var(--glow-blue); margin-bottom: .5rem;
-            white-space: nowrap;
+        .title {
+            font-family: 'Sora', sans-serif; font-weight: 800; font-size: 46px;
+            line-height: 1.1; letter-spacing: -.01em; color: #fff; white-space: nowrap;
         }
-        .header-title .accent { color: var(--neon-blue); }
-        .header-sub {
-            font-family: 'Share Tech Mono', monospace; font-size: .82rem;
-            color: var(--text-dim); letter-spacing: .15em;
-            white-space: nowrap;
+        .title span {
+            background: linear-gradient(90deg, #8fb0ff, #e6c27a);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; color: transparent;
+        }
+        .subtitle { font-size: 15px; color: var(--text-dim); white-space: nowrap; }
+
+        .h-right { display: flex; gap: 12px; }
+        .stat {
+            min-width: 118px; padding: 12px 18px; text-align: center;
+            background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 14px;
+        }
+        .stat .k {
+            font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .18em;
+            text-transform: uppercase; color: var(--text-dim); display: block; white-space: nowrap;
+        }
+        .stat .v {
+            font-family: 'Sora', sans-serif; font-weight: 700; font-size: 23px;
+            color: var(--gold-soft); display: block; margin-top: 4px; white-space: nowrap;
         }
 
         .divider {
-            height: 1px;
-            background: linear-gradient(90deg,transparent,var(--neon-blue),var(--neon-cyan),transparent);
-            margin: 1.5rem 0; opacity: .6;
+            height: 1px; margin: 26px 0;
+            background: linear-gradient(90deg, transparent, rgba(143,176,255,.5), rgba(230,194,122,.5), transparent);
         }
 
-        /* ── TABLE ── */
-        .table-wrap { border-radius: .75rem; }
-        table { width:100%; border-collapse:separate; border-spacing:6px; }
+        table { width: 100%; border-collapse: separate; border-spacing: 7px; table-layout: fixed; }
+        col.c-day { width: 100px; }
 
         thead th {
-            font-family: 'Orbitron', monospace; font-size: .68rem; font-weight: 700;
-            letter-spacing: .1em; color: var(--neon-blue); text-transform: uppercase;
-            padding: .75rem .5rem;
-            background: rgba(0,212,255,.06); border: 1px solid rgba(0,212,255,.15);
-            border-radius: .5rem;
-            white-space: nowrap;
+            padding: 12px 6px; text-align: center;
+            background: linear-gradient(180deg, rgba(91,140,255,.16), rgba(91,140,255,.06));
+            border: 1px solid rgba(91,140,255,.28); border-radius: 12px;
         }
-        thead th .time-tag {
-            display: block; font-family: 'Share Tech Mono', monospace;
-            font-size: .62rem; color: var(--text-dim); font-weight: 400;
-            margin-top: .25rem; letter-spacing: .05em;
+        thead th .p {
+            display: block; font-family: 'Sora', sans-serif; font-weight: 700;
+            font-size: 14px; letter-spacing: .12em; color: #fff; white-space: nowrap;
         }
-        thead th:first-child { color: var(--neon-cyan); }
+        thead th .t {
+            display: block; margin-top: 4px; font-family: 'JetBrains Mono', monospace;
+            font-size: 12px; font-weight: 500; color: #b4c5f3; white-space: nowrap;
+        }
+        thead th.corner {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+            letter-spacing: .22em; color: var(--gold); white-space: nowrap; vertical-align: middle;
+            background: rgba(230,194,122,.08); border-color: rgba(230,194,122,.3);
+        }
 
-        tbody td.day-cell {
-            font-family: 'Orbitron', monospace; font-size: .68rem; font-weight: 700;
-            color: var(--neon-cyan); letter-spacing: .12em; text-transform: uppercase;
+        td.day {
             text-align: center; vertical-align: middle;
-            background: rgba(0,255,204,.05); border: 1px solid rgba(0,255,204,.15);
-            border-radius: .5rem; padding: .5rem .3rem;
-            white-space: nowrap; writing-mode: vertical-lr;
-            transform: rotate(180deg); width: 52px;
+            background: linear-gradient(160deg, rgba(230,194,122,.18), rgba(230,194,122,.05));
+            border: 1px solid rgba(230,194,122,.34); border-radius: 12px;
         }
-        tbody td.subj-cell { vertical-align: stretch; padding: 3px; }
+        td.day .dn {
+            display: block; font-family: 'Sora', sans-serif; font-weight: 800;
+            font-size: 19px; letter-spacing: .1em; color: var(--gold-soft);
+        }
+        td.slot { padding: 0; vertical-align: top; }
 
-        /* ── CARDS ── */
         .card {
-            border-radius: .65rem; padding: .85rem .6rem;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            text-align: center; gap: .3rem;
-            height: 100%; min-height: 90px;
-            transition: transform .25s ease, box-shadow .25s ease;
-            position: relative; overflow: hidden; cursor: default;
+            position: relative; height: 142px; padding: 11px 10px 11px 17px;
+            display: flex; flex-direction: column; justify-content: space-between;
+            background: linear-gradient(150deg, var(--c1), var(--c2));
+            border-radius: 12px; overflow: hidden; color: #fff;
+            box-shadow: 0 6px 18px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.28);
         }
         .card::before {
-            content: ''; position: absolute;
-            top:0; left:0; right:0; height:2px;
-            border-radius: .65rem .65rem 0 0;
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+            background: rgba(255,255,255,.85);
         }
-        .card:hover { transform: translateY(-4px) scale(1.02); z-index: 10; }
-        
-        /* Converted to divs and locked wrapping */
-        .card-icon { font-size: 1.5rem; line-height: 1; display: block; }
-        .card-name { 
-            font-family:'Rajdhani','Segoe UI',sans-serif; font-weight:700; 
-            font-size:.88rem; line-height:1.2; display: block;
-            white-space: nowrap; /* CRITICAL: Prevents dynamic text splitting during scale */
+        .card .top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+        .card .code {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12px; letter-spacing: .06em;
+            padding: 2px 8px; border-radius: 6px; color: #fff;
+            background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.3);
         }
-        .card-meta { 
-            font-family:'Share Tech Mono',monospace; font-size:.64rem; 
-            opacity:.75; letter-spacing:.04em; display: block;
-            white-space: nowrap; /* CRITICAL */
+        .card .room {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12.5px;
+            padding: 3px 9px; border-radius: 6px; white-space: nowrap;
+            color: #111827; background: #fff;
+        }
+        .card .name {
+            font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px;
+            line-height: 1.2; color: #fff; white-space: nowrap; text-shadow: 0 1px 2px rgba(0,0,0,.25);
+        }
+        .card.wide .name { font-size: 20px; }
+        .card .foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+        .card .teacher { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,.95); white-space: nowrap; }
+        .card.wide .teacher { font-size: 14px; }
+        .card .dur {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11.5px;
+            letter-spacing: .04em; color: #fff; white-space: nowrap;
+            background: rgba(0,0,0,.28); padding: 3px 9px; border-radius: 20px;
         }
 
-        .c-blue   { background:linear-gradient(145deg,rgba(0,100,180,.22),rgba(0,60,120,.12));   border:1px solid rgba(0,180,255,.28);   color:#7dd3fc; box-shadow:0 4px 20px rgba(0,150,255,.1); }
-        .c-blue::before   { background:linear-gradient(90deg,#0ea5e9,#38bdf8); }
-        .c-blue:hover     { box-shadow:0 10px 30px rgba(0,150,255,.3); }
-        .c-red    { background:linear-gradient(145deg,rgba(180,0,60,.22),rgba(120,0,40,.12));    border:1px solid rgba(255,80,120,.28);  color:#fda4af; box-shadow:0 4px 20px rgba(255,50,100,.1); }
-        .c-red::before    { background:linear-gradient(90deg,#f43f5e,#fb7185); }
-        .c-red:hover      { box-shadow:0 10px 30px rgba(255,50,100,.3); }
-        .c-purple { background:linear-gradient(145deg,rgba(120,40,200,.22),rgba(80,20,150,.12)); border:1px solid rgba(200,130,255,.28); color:#e9d5ff; box-shadow:0 4px 20px rgba(160,80,255,.1); }
-        .c-purple::before { background:linear-gradient(90deg,#a855f7,#c084fc); }
-        .c-purple:hover   { box-shadow:0 10px 30px rgba(160,80,255,.3); }
-        .c-cyan   { background:linear-gradient(145deg,rgba(0,160,140,.22),rgba(0,100,90,.12));   border:1px solid rgba(0,255,200,.28);   color:#99f6e4; box-shadow:0 4px 20px rgba(0,200,180,.1); }
-        .c-cyan::before   { background:linear-gradient(90deg,#14b8a6,#2dd4bf); }
-        .c-cyan:hover     { box-shadow:0 10px 30px rgba(0,200,180,.3); }
-        .c-orange { background:linear-gradient(145deg,rgba(180,80,0,.22),rgba(120,50,0,.12));    border:1px solid rgba(255,160,60,.28);  color:#fed7aa; box-shadow:0 4px 20px rgba(255,120,30,.1); }
-        .c-orange::before { background:linear-gradient(90deg,#f97316,#fb923c); }
-        .c-orange:hover   { box-shadow:0 10px 30px rgba(255,120,30,.3); }
-        .c-green  { background:linear-gradient(145deg,rgba(20,140,60,.22),rgba(10,90,40,.12));   border:1px solid rgba(80,255,140,.28);  color:#bbf7d0; box-shadow:0 4px 20px rgba(40,200,100,.1); }
-        .c-green::before  { background:linear-gradient(90deg,#22c55e,#4ade80); }
-        .c-green:hover    { box-shadow:0 10px 30px rgba(40,200,100,.3); }
+        .free {
+            height: 142px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            background: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 8px, transparent 8px 16px);
+            border: 1px dashed rgba(148,176,255,.25);
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .3em;
+            color: rgba(157,176,212,.65); white-space: nowrap;
+        }
 
-        /* ── FOOTER (inside capture) ── */
+        /* legend */
+        .legend-title {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+            letter-spacing: .26em; text-transform: uppercase; color: var(--gold); white-space: nowrap;
+        }
+        .legend-title::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+        .legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+        .l-item {
+            display: flex; align-items: center; gap: 12px; padding: 11px 12px;
+            background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 12px;
+        }
+        .l-code {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12.5px;
+            padding: 7px 9px; border-radius: 8px; color: #fff; white-space: nowrap;
+            background: linear-gradient(150deg, var(--c1), var(--c2));
+        }
+        .l-txt { min-width: 0; }
+        .l-name { font-weight: 700; font-size: 13.5px; color: #fff; line-height: 1.25; white-space: nowrap; }
+        .l-teacher { font-size: 12.5px; color: var(--text-dim); margin-top: 2px; white-space: nowrap; }
+        .l-teacher b { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--c1); font-weight: 700; margin-right: 5px; }
+        .l-count {
+            margin-left: auto; text-align: right; flex-shrink: 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-dim);
+            line-height: 1.3; white-space: nowrap;
+        }
+        .l-count strong { display: block; font-family: 'Sora', sans-serif; font-size: 18px; color: #fff; }
+
         .footer {
             display: flex; align-items: center; justify-content: space-between;
-            margin-top: 2rem; padding-top: 1.25rem;
-            border-top: 1px solid rgba(0,212,255,.12);
-            flex-wrap: nowrap;
+            margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line);
         }
-        .credit-badge {
-            display: flex; align-items: center; gap: .6rem;
-            background: linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,255,200,.05));
-            border: 1px solid rgba(0,212,255,.3); border-radius: 2rem;
-            padding: .5rem 1.2rem;
-            font-family: 'Share Tech Mono', monospace; font-size: .82rem;
-            color: var(--text-dim); letter-spacing: .08em;
-            box-shadow: 0 0 20px rgba(0,212,255,.08);
-            white-space: nowrap;
+        .credit {
+            display: flex; align-items: center; gap: 10px; padding: 8px 18px;
+            border: 1px solid rgba(230,194,122,.35); border-radius: 30px;
+            background: rgba(230,194,122,.07);
+            font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em;
+            color: var(--text-dim); white-space: nowrap;
         }
-        .credit-badge .name {
-            font-family: 'Orbitron', monospace; font-weight: 700; font-size: .85rem;
-            color: var(--neon-blue); letter-spacing: .15em;
-            text-shadow: var(--glow-blue);
+        .credit .nm { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .14em; color: var(--gold-soft); }
+        .credit .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+        .f-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--text-dim); white-space: nowrap; }
+
+        /* ═════════════ MOBILE VIEW ═════════════ */
+        .mobile { display: none; width: 100%; max-width: 560px; }
+        .m-head { padding: 6px 2px 18px; }
+        .m-inst {
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .18em;
+            text-transform: uppercase; color: var(--gold);
         }
-        .credit-badge .dot {
-            width:7px; height:7px; background:var(--neon-cyan); border-radius:50%;
-            box-shadow:0 0 8px var(--neon-cyan); animation:blink 2s infinite;
+        .m-title {
+            font-family: 'Sora', sans-serif; font-weight: 800; font-size: 29px; line-height: 1.15;
+            color: #fff; margin: 8px 0 6px;
         }
-        @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.65)} }
-        .dept-tag {
-            font-family:'Share Tech Mono',monospace; font-size:.7rem;
-            color:var(--neon-cyan); letter-spacing:.1em; opacity:.65;
-            white-space: nowrap;
+        .m-title span {
+            background: linear-gradient(90deg, #8fb0ff, #e6c27a);
+            -webkit-background-clip: text; background-clip: text;
+            -webkit-text-fill-color: transparent; color: transparent;
+        }
+        .m-sub { font-size: 15px; color: var(--text-dim); line-height: 1.4; }
+        .m-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .m-chip {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px;
+            padding: 6px 12px; border-radius: 20px; color: var(--gold-soft);
+            background: rgba(230,194,122,.1); border: 1px solid rgba(230,194,122,.35);
         }
 
-        /* ── DOWNLOAD BUTTON (outside capture) ── */
-        .dl-wrap { position:relative; z-index:1; margin-top:1.8rem; }
+        .m-day {
+            margin-bottom: 18px; padding: 14px 12px 12px;
+            background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 18px;
+        }
+        .m-day.today { border-color: rgba(230,194,122,.7); box-shadow: 0 0 0 1px rgba(230,194,122,.3), 0 10px 30px rgba(230,194,122,.08); }
+        .m-day-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding: 0 2px; }
+        .m-day-n { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: .06em; color: var(--gold-soft); }
+        .m-today {
+            margin-left: 10px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px;
+            letter-spacing: .12em; padding: 3px 9px; border-radius: 20px; color: #111827; background: var(--gold);
+            vertical-align: middle;
+        }
+        .m-day-c { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--text-dim); }
+
+        .m-row { display: grid; grid-template-columns: 58px 1fr; gap: 10px; margin-bottom: 10px; }
+        .m-row:last-child { margin-bottom: 0; }
+        .m-time { text-align: center; padding-top: 10px; font-family: 'JetBrains Mono', monospace; line-height: 1.25; }
+        .m-time b { display: block; font-size: 14.5px; color: #fff; font-weight: 700; }
+        .m-time i { display: block; font-style: normal; font-size: 12px; color: var(--text-dim); margin: 1px 0; }
+        .m-time span { display: block; font-size: 13px; color: var(--text-dim); }
+
+        .m-card {
+            position: relative; padding: 13px 14px 13px 18px; border-radius: 14px; color: #fff;
+            background: linear-gradient(150deg, var(--c1), var(--c2));
+            box-shadow: 0 6px 16px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.25);
+            overflow: hidden;
+        }
+        .m-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: rgba(255,255,255,.85); }
+        .m-name { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.22; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+        .m-teacher { font-size: 15.5px; font-weight: 600; margin-top: 5px; color: rgba(255,255,255,.96); }
+        .m-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+        .m-tag {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 12.5px;
+            padding: 4px 10px; border-radius: 20px; color: #fff;
+            background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.28);
+        }
+        .m-tag.room { background: #fff; color: #111827; border-color: #fff; }
+
+        .m-free {
+            padding: 12px 14px; border-radius: 14px; border: 1px dashed rgba(148,176,255,.3);
+            font-size: 14.5px; color: var(--text-dim); font-weight: 500;
+            background: repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 8px, transparent 8px 16px);
+        }
+
+        .m-legend { margin-top: 24px; }
+        .m-legend .legend { grid-template-columns: minmax(0,1fr); }
+        .m-legend .l-txt { flex: 1; }
+        .m-legend .l-name { font-size: 15px; white-space: normal; }
+        .m-legend .l-teacher { font-size: 13.5px; white-space: normal; }
+        .m-legend .l-count strong { font-size: 20px; }
+        .m-credit { text-align: center; margin-top: 22px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .14em; color: var(--text-dim); }
+        .m-credit b { font-family: 'Sora', sans-serif; font-size: 14px; color: var(--gold-soft); letter-spacing: .14em; }
+
+        /* ───────── DOWNLOAD BUTTON ───────── */
+        .dl-wrap { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+        .dl-btn.alt {
+            color: var(--gold-soft); background: rgba(230,194,122,.08);
+            border: 2px solid rgba(230,194,122,.6); box-shadow: 0 10px 30px rgba(230,194,122,.12);
+        }
         .dl-btn {
-            position:relative; padding:.9rem 2.5rem; background:transparent;
-            border:2px solid var(--neon-blue); color:var(--neon-blue);
-            font-family:'Orbitron',monospace; font-size:.78rem; font-weight:700;
-            letter-spacing:.2em; text-transform:uppercase; border-radius:2rem;
-            cursor:pointer; display:flex; align-items:center; gap:.75rem;
-            box-shadow:0 0 20px rgba(0,212,255,.15),inset 0 0 20px rgba(0,212,255,.04);
-            transition:all .3s ease; overflow:hidden;
+            position: relative; padding: 16px 38px; cursor: pointer;
+            display: flex; align-items: center; gap: 12px;
+            font-family: 'Sora', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: .12em;
+            color: #0a1128; border: none; border-radius: 40px;
+            background: linear-gradient(90deg, #8fb0ff, #e6c27a);
+            box-shadow: 0 10px 34px rgba(91,140,255,.35);
+            transition: transform .2s ease, box-shadow .2s ease;
         }
-        .dl-btn::before {
-            content:''; position:absolute; inset:0;
-            background:var(--neon-blue); opacity:0; transition:opacity .3s;
-        }
-        .dl-btn:hover        { color:#040d1a; box-shadow:0 0 45px rgba(0,212,255,.6); }
-        .dl-btn:hover::before{ opacity:1; }
-        .dl-btn:active       { transform:scale(.97); }
-        .dl-btn:disabled     { opacity:.5; cursor:not-allowed; }
-        .dl-btn > * { position:relative; z-index:1; }
+        .dl-btn:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(91,140,255,.5); }
+        .dl-btn:active { transform: scale(.97); }
+        .dl-btn:disabled { opacity: .6; cursor: not-allowed; }
         .spinner {
-            display:none; width:16px; height:16px;
-            border:2px solid currentColor; border-top-color:transparent;
-            border-radius:50%; animation:spin .7s linear infinite;
+            display: none; width: 16px; height: 16px; border: 2px solid currentColor;
+            border-top-color: transparent; border-radius: 50%; animation: spin .7s linear infinite;
         }
-        @keyframes spin { to { transform:rotate(360deg); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ───────── RESPONSIVE SWITCH ───────── */
+        @media (max-width: 900px) {
+            body { padding: 1rem .8rem 2.5rem; overflow-x: hidden; }
+            .mobile { min-width: 0; max-width: 100%; }
+            .m-name, .m-teacher { overflow-wrap: anywhere; }
+            #capture { display: none; }
+            .mobile { display: block; }
+            .dl-wrap { width: 100%; max-width: 560px; flex-direction: column; }
+            .dl-btn { width: 100%; justify-content: center; }
+        }
+        /* while exporting from a phone: show the full-size poster, hide the mobile list */
+        body.exporting #capture { display: block !important; }
+        body.exporting .mobile  { display: none !important; }
+
+        /* while exporting the mobile view (also works from a desktop screen) */
+        body.exporting-mobile #capture { display: none !important; }
+        body.exporting-mobile .mobile {
+            display: block !important; width: 430px !important; max-width: none !important;
+            padding: 18px 16px 22px; background: linear-gradient(180deg, #0b1530, #070d1c);
+        }
+        body.exporting-mobile .m-today { display: none; }
+        body.exporting-mobile .m-day.today { border-color: var(--line); box-shadow: none; }
     </style>
 </head>
 <body>
 
-<!-- ░░░ CAPTURE ZONE ░░░ -->
+<!-- ░░░ CAPTURE ZONE (desktop view + downloaded image) ░░░ -->
 <div id="capture">
+    <div class="top-bar"></div>
 
     <div class="header">
-        <span class="header-eyebrow">⚡ Electrical Technology · 2nd Shift · Academic Schedule</span>
-        <h1 class="header-title">3RD SEMESTER <span class="accent">CLASS ROUTINE</span></h1>
-        <span class="header-sub">// 1:30 PM — 6:45 PM &nbsp;|&nbsp; SUN – THU &nbsp;|&nbsp; 2025–2026</span>
+        <div class="h-left">
+            <span class="institute">Bogura Government Polytechnic Institute</span>
+            <h1 class="title">4th Semester <span>Class Routine</span></h1>
+            <span class="subtitle">Department of Electrical Technology &nbsp;·&nbsp; Group B &nbsp;·&nbsp; Sunday – Thursday</span>
+        </div>
+        <div class="h-right">
+            <div class="stat"><span class="k">Semester</span><span class="v">4th</span></div>
+            <div class="stat"><span class="k">Group</span><span class="v">B</span></div>
+            <div class="stat"><span class="k">Time</span><span class="v">1:30–6:45 PM</span></div>
+            <div class="stat"><span class="k">Periods / Week</span><span class="v" id="totalPeriods">33</span></div>
+        </div>
     </div>
 
     <div class="divider"></div>
 
-    <div class="table-wrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>DAY</th>
-                    <th>1ST<span class="time-tag">1:30–2:15</span></th>
-                    <th>2ND<span class="time-tag">2:15–3:00</span></th>
-                    <th>3RD<span class="time-tag">3:00–3:45</span></th>
-                    <th>4TH<span class="time-tag">3:45–4:30</span></th>
-                    <th>5TH<span class="time-tag">4:30–5:15</span></th>
-                    <th>6TH<span class="time-tag">5:15–6:00</span></th>
-                    <th>7TH<span class="time-tag">6:00–6:45</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="day-cell">SUN</td>
-                    <td class="subj-cell" colspan="2">
-                        <div class="card c-orange">
-                            <div class="card-icon">🔌</div>
-                            <div class="card-name">Electrical<br>Appliances</div>
-                            <div class="card-meta">ET-8 · Rm 1405</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell">
-                        <div class="card c-cyan">
-                            <div class="card-icon">🧪</div>
-                            <div class="card-name">Chemistry</div>
-                            <div class="card-meta">AAF · Rm 1405</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="1">
-                        <div class="card c-red">
-                            <div class="card-icon">⚡</div>
-                            <div class="card-name">Electrical<br>Circuit-2</div>
-                            <div class="card-meta">ET-2 · Rm 1404</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-blue">
-                            <div class="card-icon">💻</div>
-                            <div class="card-name">Computer<br>Office App.</div>
-                            <div class="card-meta">MIM · Rm 1205</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="day-cell">MON</td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-purple">
-                            <div class="card-icon">📐</div>
-                            <div class="card-name">Mathematics-3</div>
-                            <div class="card-meta">MM · Rm 1407</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="1">
-                        <div class="card c-red">
-                            <div class="card-icon">⚡</div>
-                            <div class="card-name">Electrical<br>Circuit-2</div>
-                            <div class="card-meta">ET-2 · Rm 1407</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-green">
-                            <div class="card-icon">⚙️</div>
-                            <div class="card-name">Industrial<br>Electronics</div>
-                            <div class="card-meta">YH · Rm 311</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="day-cell">TUE</td>
-                    <td class="subj-cell" colspan="2">
-                        <div class="card c-purple">
-                            <div class="card-icon">📐</div>
-                            <div class="card-name">Mathematics-3</div>
-                            <div class="card-meta">MM · Rm 1406</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell">
-                        <div class="card c-green">
-                            <div class="card-icon">⚙️</div>
-                            <div class="card-name">Industrial<br>Electronics</div>
-                            <div class="card-meta">YH · Rm 1406</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="1">
-                        <div class="card c-red">
-                            <div class="card-icon">⚡</div>
-                            <div class="card-name">Electrical<br>Circuit-2</div>
-                            <div class="card-meta">ET-2 · Rm 1404</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-cyan">
-                            <div class="card-icon">🧪</div>
-                            <div class="card-name">Chemistry</div>
-                            <div class="card-meta">AAF · Rm 303</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="day-cell">WED</td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-red">
-                            <div class="card-icon">⚡</div>
-                            <div class="card-name">Electrical<br>Circuit-2</div>
-                            <div class="card-meta">ET-2 · Rm 305</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="1">
-                        <div class="card c-purple">
-                            <div class="card-icon">📐</div>
-                            <div class="card-name">Mathematics-3</div>
-                            <div class="card-meta">MM · Rm 304</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-orange">
-                            <div class="card-icon">🔌</div>
-                            <div class="card-name">Electrical<br>Appliances</div>
-                            <div class="card-meta">ET-8 · Rm 201</div>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="day-cell">THU</td>
-                    <td class="subj-cell" colspan="3">
-                        <div class="card c-blue">
-                            <div class="card-icon">💻</div>
-                            <div class="card-name">Computer<br>Office App.</div>
-                            <div class="card-meta">MIM · Rm 1205</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="2">
-                        <div class="card c-cyan">
-                            <div class="card-icon">🧪</div>
-                            <div class="card-name">Chemistry</div>
-                            <div class="card-meta">AAF · Rm 1405</div>
-                        </div>
-                    </td>
-                    <td class="subj-cell" colspan="2">
-                        <div class="card c-green">
-                            <div class="card-icon">⚙️</div>
-                            <div class="card-name">Industrial<br>Electronics</div>
-                            <div class="card-meta">YH · Rm 1405</div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <table>
+        <colgroup>
+            <col class="c-day">
+            <col><col><col><col><col><col><col>
+        </colgroup>
+        <thead>
+            <tr>
+                <th class="corner">DAY</th>
+                <th><span class="p">1ST</span><span class="t">1:30 – 2:15</span></th>
+                <th><span class="p">2ND</span><span class="t">2:15 – 3:00</span></th>
+                <th><span class="p">3RD</span><span class="t">3:00 – 3:45</span></th>
+                <th><span class="p">4TH</span><span class="t">3:45 – 4:30</span></th>
+                <th><span class="p">5TH</span><span class="t">4:30 – 5:15</span></th>
+                <th><span class="p">6TH</span><span class="t">5:15 – 6:00</span></th>
+                <th><span class="p">7TH</span><span class="t">6:00 – 6:45</span></th>
+            </tr>
+        </thead>
+        <tbody id="routineBody"></tbody>
+    </table>
 
-    <div class="divider" style="margin-top:1.5rem;"></div>
+    <div class="divider"></div>
+
+    <div class="legend-title">Subjects &amp; Teachers</div>
+    <div class="legend" id="legend"></div>
 
     <div class="footer">
-        <div class="credit-badge">
-            <span class="dot"></span>
-            <span>DESIGNED BY</span>
-            <span class="name">SAMIUL</span>
-            <span>🚀</span>
-        </div>
-        <span class="dept-tag">// ELECTRICAL TECHNOLOGY · 3RD SEM · 2ND SHIFT</span>
+        <div class="credit"><span class="dot"></span><span>DESIGNED BY</span><span class="nm">SAMIUL</span></div>
+        <span class="f-tag">ELECTRICAL TECHNOLOGY · 4TH SEMESTER · GROUP B · DAY SHIFT</span>
     </div>
-
 </div>
 <!-- ░░░ END CAPTURE ZONE ░░░ -->
 
+<!-- ░░░ MOBILE VIEW ░░░ -->
+<div class="mobile" id="mobile">
+    <div class="m-head">
+        <div class="m-inst">Bogura Govt. Polytechnic Institute</div>
+        <h1 class="m-title">4th Semester <span>Class Routine</span></h1>
+        <div class="m-sub">Electrical Technology · Group B<br>Sunday – Thursday · 1:30 – 6:45 PM</div>
+        <div class="m-chips">
+            <span class="m-chip">4th SEM</span>
+            <span class="m-chip">GROUP B</span>
+            <span class="m-chip">45 MIN / PERIOD</span>
+        </div>
+    </div>
+    <div id="mDays"></div>
+    <div class="m-legend">
+        <div class="legend-title">Subjects &amp; Teachers</div>
+        <div class="legend" id="mLegend"></div>
+    </div>
+    <div class="m-credit">DESIGNED BY <b>SAMIUL</b></div>
+</div>
+
 <div class="dl-wrap">
     <button class="dl-btn" id="dlBtn">
-        <svg id="dlIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
              fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
+            <rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
         </svg>
-        <span class="spinner" id="dlSpinner"></span>
-        <span id="dlLabel">DOWNLOAD AS IMAGE</span>
+        <span class="spinner"></span>
+        <span class="lbl">DOWNLOAD FULL VIEW</span>
+    </button>
+    <button class="dl-btn alt" id="dlMobileBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="2" width="12" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/>
+        </svg>
+        <span class="spinner"></span>
+        <span class="lbl">DOWNLOAD MOBILE VIEW</span>
     </button>
 </div>
 
 <script>
-(function () {
-    var btn     = document.getElementById('dlBtn');
-    var icon    = document.getElementById('dlIcon');
-    var spinner = document.getElementById('dlSpinner');
-    var label   = document.getElementById('dlLabel');
-    var node    = document.getElementById('capture');
+/* ───────── DATA ───────── */
+var START = ['1:30','2:15','3:00','3:45','4:30','5:15','6:00'];
+var END   = ['2:15','3:00','3:45','4:30','5:15','6:00','6:45'];
 
-    function busy(on) {
-        btn.disabled           = on;
-        icon.style.display     = on ? 'none'  : 'block';
-        spinner.style.display  = on ? 'block' : 'none';
-        label.textContent      = on ? 'GENERATING…' : 'DOWNLOAD AS IMAGE';
-    }
+/* lines = name broken for narrow (1-period) cards */
+var SUBJECTS = {
+    '26742': { name: 'DC Machine',                         lines: ['DC Machine'],                          cls: 'k-dc' },
+    '27044': { name: 'Applied Mechanics',                  lines: ['Applied', 'Mechanics'],                cls: 'k-am' },
+    '26743': { name: 'Electrical Engineering Project',     lines: ['Electrical', 'Engineering', 'Project'], cls: 'k-ep' },
+    '26741': { name: 'Electrical Installation &amp; Planning', lines: ['Electrical', 'Installation', '&amp; Planning'], cls: 'k-ei' },
+    '25811': { name: 'Social Science',                     lines: ['Social Science'],                      cls: 'k-ss' },
+    '26845': { name: 'Digital Electronics',                lines: ['Digital', 'Electronics'],              cls: 'k-de' },
+    '25841': { name: 'Accounting',                         lines: ['Accounting'],                          cls: 'k-ac' }
+};
 
-    function fail() {
-        label.textContent       = 'ERROR — TRY AGAIN';
-        btn.style.borderColor   = '#ff4d6d';
-        btn.style.color         = '#ff4d6d';
-        spinner.style.display   = 'none';
-        setTimeout(function () {
-            label.textContent     = 'DOWNLOAD AS IMAGE';
-            btn.style.borderColor = '';
-            btn.style.color       = '';
-            btn.disabled          = false;
-            icon.style.display    = 'block';
-        }, 3500);
-    }
+var TEACHERS = {
+    'M1':  'Md. Minhazul Islam',
+    'SM':  'Md. Selim Mondol',
+    'EH':  'Md. Emran Hossain',
+    'SK':  'Md. Shazzad Kabir',
+    'ZA':  'Md. Zahangir Alam',
+    'ZH':  'Md. Zinnat Hossain',
+    'MAM': 'Md. Abdullah-Al-Mamun'
+};
 
-    btn.addEventListener('click', function () {
-        busy(true);
+var SUBJECT_TEACHER = {
+    '26742': 'M1', '27044': 'SM', '26743': 'EH', '26741': 'SK',
+    '25811': 'ZA', '26845': 'ZH', '25841': 'MAM'
+};
+var LEGEND_ORDER = ['26742','27044','26743','26741','25811','26845','25841'];
 
-        document.fonts.ready.then(function () {
-            setTimeout(function () {
-                domtoimage.toPng(node, {
-                    scale: 3, 
-                    style: {
-                        margin: '0', 
-                        animation: 'none',
-                        transition: 'none'
-                    }
-                })
-                .then(function (dataUrl) {
-                    var a = document.createElement('a');
-                    a.download = 'Samiul_3rd_Semester_Routine.png';
-                    a.href = dataUrl;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    busy(false);
-                })
-                .catch(function (err) {
-                    console.error('Export failed:', err);
-                    fail();
-                });
-            }, 300);
+/* blocks: [startPeriod(1-7), periodsLong, code|null(free), teacher, room] */
+var ROUTINE = [
+    { day:'SUN', full:'Sunday', b:[
+        [1,3,'26742','M1','305'], [4,1,'27044','SM','314'], [5,3,'26743','EH','314'] ]},
+    { day:'MON', full:'Monday', b:[
+        [1,3,'26741','SK','201'], [4,1,'27044','SM','1403'], [5,1,'25811','ZA','1403'], [6,2,'26845','ZH','1403'] ]},
+    { day:'TUE', full:'Tuesday', b:[
+        [1,3,'26743','EH','1107'], [4,1,'26845','ZH','1107'], [5,2,'26742','M1','1107'], [7,1,null] ]},
+    { day:'WED', full:'Wednesday', b:[
+        [1,1,'25841','MAM','1403'], [2,2,'26741','SK','1403'], [4,1,null], [5,3,'27044','SM','301'] ]},
+    { day:'THU', full:'Thursday', b:[
+        [1,1,'25841','MAM','304'], [2,1,'25811','ZA','304'], [3,1,'26741','SK','304'],
+        [4,2,'26742','M1','1107'], [6,2,'26845','ZH','311'] ]}
+];
+
+function timeRange(start, len) { return START[start-1] + ' – ' + END[start+len-2]; }
+
+/* ───────── RENDER ───────── */
+(function render() {
+    var counts = {}, total = 0;
+    var todayIdx = new Date().getDay();            // 0 = Sunday
+
+    var body  = document.getElementById('routineBody');
+    var mDays = document.getElementById('mDays');
+
+    ROUTINE.forEach(function (row, di) {
+        /* ---- desktop row ---- */
+        var html = '<td class="day"><span class="dn">' + row.day + '</span></td>';
+        var classCount = 0;
+
+        row.b.forEach(function (blk) {
+            var start = blk[0], len = blk[1], code = blk[2];
+            if (code === null) {
+                html += '<td class="slot" colspan="' + len + '"><div class="free">FREE</div></td>';
+                return;
+            }
+            var s = SUBJECTS[code];
+            counts[code] = (counts[code] || 0) + len;
+            total += len; classCount++;
+            var wide = len > 1;
+            html += '<td class="slot" colspan="' + len + '"><div class="card ' + s.cls + (wide ? ' wide' : '') + '">' +
+                        '<div class="top"><span class="code">' + code + '</span><span class="room">Room ' + blk[4] + '</span></div>' +
+                        '<div class="name">' + (wide ? s.name : s.lines.join('<br>')) + '</div>' +
+                        '<div class="foot"><span class="teacher">' + TEACHERS[blk[3]] + '</span>' +
+                        (wide ? '<span class="dur">' + len + ' PERIODS</span>' : '') + '</div>' +
+                    '</div></td>';
+        });
+        var tr = document.createElement('tr');
+        tr.innerHTML = html;
+        body.appendChild(tr);
+
+        /* ---- mobile day block ---- */
+        var m = '<div class="m-day' + (di + 0 === todayIdx ? ' today' : '') + '">' +
+                '<div class="m-day-h"><div><span class="m-day-n">' + row.full.toUpperCase() + '</span>' +
+                (di === todayIdx ? '<span class="m-today">TODAY</span>' : '') + '</div>' +
+                '<span class="m-day-c">' + classCount + ' classes</span></div>';
+        row.b.forEach(function (blk) {
+            var start = blk[0], len = blk[1], code = blk[2];
+            var t = '<div class="m-time"><b>' + START[start-1] + '</b><i>to</i><span>' + END[start+len-2] + '</span></div>';
+            if (code === null) {
+                m += '<div class="m-row">' + t + '<div class="m-free">Free period</div></div>';
+            } else {
+                var s = SUBJECTS[code];
+                m += '<div class="m-row">' + t + '<div class="m-card ' + s.cls + '">' +
+                        '<div class="m-name">' + s.name + '</div>' +
+                        '<div class="m-teacher">' + TEACHERS[blk[3]] + '</div>' +
+                        '<div class="m-tags"><span class="m-tag room">Room ' + blk[4] + '</span>' +
+                        '<span class="m-tag">' + len + (len > 1 ? ' periods' : ' period') + '</span>' +
+                        '<span class="m-tag">' + code + '</span></div>' +
+                     '</div></div>';
+            }
+        });
+        m += '</div>';
+        mDays.insertAdjacentHTML('beforeend', m);
+    });
+
+    document.getElementById('totalPeriods').textContent = total;
+
+    /* legends (desktop + mobile) */
+    ['legend', 'mLegend'].forEach(function (id) {
+        var box = document.getElementById(id);
+        LEGEND_ORDER.forEach(function (code) {
+            var s = SUBJECTS[code], t = SUBJECT_TEACHER[code];
+            var item = document.createElement('div');
+            item.className = 'l-item ' + s.cls;
+            item.innerHTML =
+                '<span class="l-code">' + code + '</span>' +
+                '<div class="l-txt"><div class="l-name">' + s.name + '</div>' +
+                '<div class="l-teacher"><b>' + t + '</b>' + TEACHERS[t] + '</div></div>' +
+                '<div class="l-count"><strong>' + (counts[code] || 0) + '</strong>periods/wk</div>';
+            box.appendChild(item);
         });
     });
+})();
+
+/* ───────── DOWNLOAD (two buttons) ───────── */
+(function () {
+    function setup(opts) {
+        var btn     = document.getElementById(opts.btn);
+        var icon    = btn.querySelector('svg');
+        var spinner = btn.querySelector('.spinner');
+        var label   = btn.querySelector('.lbl');
+        var node    = document.getElementById(opts.node);
+
+        function busy(on) {
+            btn.disabled          = on;
+            icon.style.display    = on ? 'none'  : 'block';
+            spinner.style.display = on ? 'block' : 'none';
+            label.textContent     = on ? 'GENERATING…' : opts.text;
+        }
+        function done() { document.body.classList.remove(opts.cls); }
+        function fail() {
+            label.textContent = 'ERROR — TRY AGAIN';
+            spinner.style.display = 'none';
+            setTimeout(function () {
+                label.textContent  = opts.text;
+                btn.disabled       = false;
+                icon.style.display = 'block';
+            }, 3500);
+        }
+
+        btn.addEventListener('click', function () {
+            busy(true);
+            document.body.classList.add(opts.cls);          // temporarily show the right layout
+            document.fonts.ready.then(function () {
+                setTimeout(function () {
+                    domtoimage.toPng(node, {
+                        scale: 3,
+                        bgcolor: opts.bg,
+                        style: { margin: '0', animation: 'none', transition: 'none' }
+                    })
+                    .then(function (dataUrl) {
+                        done();
+                        var a = document.createElement('a');
+                        a.download = opts.file;
+                        a.href = dataUrl;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        busy(false);
+                    })
+                    .catch(function (err) {
+                        done();
+                        console.error('Export failed:', err);
+                        fail();
+                    });
+                }, 400);
+            });
+        });
+    }
+
+    setup({ btn: 'dlBtn',       node: 'capture', cls: 'exporting',
+            text: 'DOWNLOAD FULL VIEW',   file: 'Samiul_4th_Semester_Routine_Full.png',   bg: null });
+    setup({ btn: 'dlMobileBtn', node: 'mobile',  cls: 'exporting-mobile',
+            text: 'DOWNLOAD MOBILE VIEW', file: 'Samiul_4th_Semester_Routine_Mobile.png', bg: '#0a1226' });
 })();
 </script>
 </body>
